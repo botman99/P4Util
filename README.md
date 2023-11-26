@@ -17,31 +17,31 @@ The output of 'P4 something' would be passed into stageone and stagetwo AND into
 
 Stage commands:
 
-The following commands are used for the stage' mentioned above.  These command will execute and, if they do not fail, the command for the next stage will be executed.  An example of a command failing would be if you were using the 'regex' command and that returned no matches, then it is treated as a failure.
+The following commands are used for the 'stage' mentioned above.  These command will execute and, if they do not fail, the command for the next stage will be executed.  An example of a command failing would be if you were using the 'regex' command and that returned no matches, then it is treated as a failure.
 
->	command= 	- Pass a command to P4 and process the resulting output as a single string (all of the output is in one string of text).
+>	**command=** - Pass a command to P4 and process the resulting output as a single string (all of the output is in one string of text).
 >
->	commandl=	- Pass a command to P4 and process each line of the output as individual strings one after the other.
+>	**commandl=** - Pass a command to P4 and process each line of the output as individual strings one after the other.
 >
->	regex=		- Take the stage input and run a Regular Expression search on the input string using the specific regex string.
+>	**regex=** - Take the stage input and run a Regular Expression search on the input string using the specific regex string.
 >
->	regexm=		- Take the stage input and run a Regular Expression search on the input string using "Multiline Mode".
+>	**regexm=** - Take the stage input and run a Regular Expression search on the input string using "Multiline Mode".
 >
 >	Multiline mode for regexm will treat each line of text in the input string as a single line.  This allows '^' (beginning of line) and '$' (end of line) to work properly when searching for text in the input.  Multiline mode is usually only necessary if you use the 'command=' stage format to execute a Perforce command and store all of the output of that command in a single text string.  When doing a regular expression search in that text string, you usually want to look for beginning and end of line markers to search for specific text.
 >
->	replace=	- Replace one string in the input to the stage with a different string (this modifies the input to the next stage).
+>	**replace=** - Replace one string in the input to the stage with a different string (this modifies the input to the next stage).
 >
->	output		- Take the stage input string and output that to standard out.
+>	**output** - Take the stage input string and output that to standard out.
 >
->	output=		- Output a formatted string to standard out.  This allows you to output matches from previous regex stages.  See "Output" below.
+>	**output=** - Output a formatted string to standard out.  This allows you to output matches from previous regex stages.  See "Output" below.
 >
->	outputf=	- Output the stage input to a file by specifying a filename (like outputf="D:\Perforce\output.txt")
+>	**outputf=** - Output the stage input to a file by specifying a filename (like outputf="D:\Perforce\output.txt")
 >
->	count		- Take the stage input and count the number of non-blank lines and store that count.
+>	**count** - Take the stage input and count the number of non-blank lines and store that count.
 >
->	greaterthan= - Compare two integers or two strings and continue to the next stage if the first is greater than the second.
+>	**greaterthan=** - Compare two integers or two strings and continue to the next stage if the first is greater than the second.
 >
->	lessthan=	- Compare two integers or two strings and continue to the next stage if the first is less than the second.
+>	**lessthan=** - Compare two integers or two strings and continue to the next stage if the first is less than the second.
 >
 >	(Note: You can do 'equals' by doing both greaterthan and lessthan, like X > 9, X < 11, for checking if X equals 10).
 
@@ -50,14 +50,14 @@ Text substitution in arguments:
 
 For things like "command=", or "output=", it is useful to be able to substitute control strings with other text. For example, you may want to run the Perforce command for getting a workspace and specify a user or workspace name	at runtime.  
 
->	%i		- replace "%i" in the stage argument with the current 'input' string.
+>	%i - replace "%i" in the stage argument with the current 'input' string.
 
->	%c		- replace "%c" in the stage argument with the integer result of the previous 'count' stage.
+>	%c - replace "%c" in the stage argument with the integer result of the previous 'count' stage.
 
->	%rN_M	- replace "%rN_M" in the stage argument with the regular expression capture group from regex 'N', group 'M'
+>	%rN_M - replace "%rN_M" in the stage argument with the regular expression capture group from regex 'N', group 'M'
 	(where N and M are integer values 1 or greater).
 
->	%mN		- replace "%mN" in the stage argument with the number of capture groups from regex 'N'
+>	%mN - replace "%mN" in the stage argument with the number of capture groups from regex 'N'
 				(where N is an integer value 1 or greater).
 
 For example, if you have the following P4Util arguments:
