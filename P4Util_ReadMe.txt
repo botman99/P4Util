@@ -30,7 +30,7 @@ P4Util - Perforce commandline utility
 	In most cases, you would want to use regex to search for some substring of the output of a P4 command and
 	then use those substrings as arguments into some other P4 command.  For example, you may want to get a list
 	of users and then for each user, find the workspaces they have on the server and output the username
-	followed by the name of the workspace.  Or you may just want to count how may workspaces each user has
+	followed by the name of the workspace.  Or you may just want to count how many workspaces each user has
 	and output the username followed by the number of workspaces, etc.
 
 
