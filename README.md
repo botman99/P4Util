@@ -44,6 +44,8 @@ The following commands are used for the 'stage' mentioned above.  These command 
 >	**lessthan=** - Compare two integers or two strings and continue to the next stage if the first is less than the second.
 >
 >	(Note: You can do 'equals' by doing both greaterthan and lessthan, like X > 9, X < 11, for checking if X equals 10).
+>
+>	Any stage command that ends in '=' MUST be followed by text in double quotes (like, command="test" or replace="a,b") to	keep multiple arguments to that stage together in one command.  Do not use spaces when separating arguments with commas (use replace="x,y", not replace="x, y" unless you want the space to be included).
 
 
 Text substitution in arguments:
